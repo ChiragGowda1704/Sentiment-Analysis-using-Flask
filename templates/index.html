@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Pro | AI-Powered Text Analysis</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+    <div class="wave-bg"></div>
+    
+    <main class="container">
+        <header class="header">
+            
+            <h1 class="title">Sentiment<span class="highlight">Pro</span></h1>
+            <p class="subtitle">AI-powered emotional tone detection</p>
+        </header>
+
+        <section class="analysis-card">
+            <form method="POST" class="analysis-form" id="sentimentForm">
+                <div class="input-group">
+                    <textarea 
+                        name="text" 
+                        id="textInput"
+                        placeholder="Try: 'This app is absolutely amazing!'" 
+                        required
+                        minlength="3"
+                        maxlength="1000"></textarea>
+                    <div class="input-footer">
+                        <div class="char-counter">
+                            <i class="fas fa-text-height"></i>
+                            <span id="charCount">0</span>/1000
+                        </div>
+                        <button type="submit" class="analyze-btn" id="analyzeBtn">
+                            <span>Analyze</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="result-container" id="resultContainer">
+                {% if sentiment %}
+                <div class="result-card {{ sentiment.lower() }} animate-pop">
+                    <div class="emoji-container">
+                        <div class="emoji">
+                            {% if sentiment == "Positive" %}😊
+                            {% elif sentiment == "Negative" %}😠
+                            {% elif sentiment == "Neutral" %}😐
+                            {% else %}❓{% endif %}
+                        </div>
+                        <h3>{{ sentiment }} Sentiment</h3>
+                    </div>
+                    
+                    {% if text %}
+                    <div class="text-sample">
+                        <p>"{{ text }}"</p>
+                    </div>
+                    {% endif %}
+
+                    <div class="confidence-meter">
+                        <div class="meter-labels">
+                            <span>0%</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="confidence-bar">
+                            <div class="fill" style="width: {{ confidence }}%;"></div>
+                        </div>
+                        <span class="confidence-value">
+                            <i class="fas fa-chart-line"></i>
+                            {{ confidence }}% Confidence
+                        </span>
+                    </div>
+
+                    <div class="tips">
+                        <h4><i class="fas fa-lightbulb"></i> Did You Know?</h4>
+                        <p>
+                            {% if sentiment == "Positive" %}
+                            Positive language increases engagement by up to 30%!
+                            {% elif sentiment == "Negative" %}
+                            Negative reviews often contain specific improvement suggestions.
+                            {% else %}
+                            Neutral statements often lack emotional descriptors.
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart"></i> for your resume</p>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

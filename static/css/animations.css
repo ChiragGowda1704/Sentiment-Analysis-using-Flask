@@ -1,0 +1,63 @@
+/* Entrance animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to { 
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% { 
+      opacity: 0;
+      transform: scale(0.8);
+  }
+  50% {
+      opacity: 1;
+      transform: scale(1.05);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Element-specific animations */
+.container {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.header {
+  animation: slideUp 0.6s ease forwards;
+}
+
+.analysis-card {
+  animation: slideUp 0.7s ease forwards 0.2s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.animate-pop {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Hover effects */
+.analyze-btn:hover i {
+  transform: translateX(3px);
+}
+
+/* Loading animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading .analyze-btn i {
+  animation: spin 1s linear infinite;
+}

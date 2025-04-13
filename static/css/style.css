@@ -1,0 +1,267 @@
+:root {
+  --primary: #4361ee;
+  --positive: #4cc9f0;
+  --negative: #f72585;
+  --neutral: #7209b7;
+  --dark: #2b2d42;
+  --light: #f8f9fa;
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wave-bg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/wave-bg.svg') no-repeat bottom center;
+  background-size: cover;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(var(--shadow));
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--primary), var(--neutral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: var(--dark);
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.analysis-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+  font-size: 1rem;
+  resize: none;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.char-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dark);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.analyze-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.analyze-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+}
+
+.analyze-btn:active {
+  transform: translateY(0);
+}
+
+.result-container {
+  min-height: 200px;
+}
+
+.result-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--primary);
+}
+
+.emoji-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.emoji {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.result-card h3 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.text-sample {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.confidence-meter {
+  margin: 2rem 0;
+}
+
+.meter-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.confidence-bar {
+  height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  transition: width 1s ease;
+}
+
+.confidence-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.tips {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  border-left: 3px solid var(--primary);
+}
+
+.tips h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Sentiment-specific colors */
+.positive {
+  border-left-color: var(--positive);
+}
+.negative {
+  border-left-color: var(--negative);
+}
+.neutral {
+  border-left-color: var(--neutral);
+}
+
+.positive .fill {
+  background: var(--positive);
+}
+.negative .fill {
+  background: var(--negative);
+}
+.neutral .fill {
+  background: var(--neutral);
+}
+
+.positive h3 {
+  color: var(--positive);
+}
+.negative h3 {
+  color: var(--negative);
+}
+.neutral h3 {
+  color: var(--neutral);
+}
